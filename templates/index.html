@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static' , filename='css/materialize.min.css')}}" media="screen,projection" />
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static' , filename='css/index.css')}}" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+
+<body>
+	<!--Import jQuery before materialize.js-->
+	<div id="particles"></div>
+	<div class="container">
+		<div class="row" style="height:100%;">
+			<div class="col s2 offset-s5">
+				<div class="valign-wrapper" style="height:100%; position:absolute;">
+					<a class="waves-effect waves-light btn-floating btn-large blue-grey pulse darken-4" href="#me"><i class="large material-icons">person_pin</i></a>
+				</div>
+			</div>
+		</div>
+		<div id="me" class="modal">
+			<div class="modal-content">
+				<h4>Andre Cowie        <a class="waves-effect waves-dark btn-floating white" href="#aboutme"><i class="material-icons grey-text darken-4">info_outline</i></a></h4>
+			</div>
+
+			<ul class="collapsible" data-collapsible="accordion">
+
+				<li id="welcome">
+					<div class="collapsible-header hoverable"><i class="material-icons">perm_identity</i>Welcome</div>
+					<div class="collapsible-body" id="welcomebody">
+						<div class="row">
+							<span>Do you know me?</span>
+						</div>
+						<div class="row" style="text-align:center">
+							<a class="waves-effect waves-light btn-floating blue-grey darken-4 hoverable" id="personalyes"><i class="large material-icons">done</i></a>
+							<a class="waves-effect waves-light btn-floating blue-grey darken-4 hoverable" id="personalno"><i class="large material-icons">not_interested</i></a>
+						</div>
+					</div>
+				</li>
+
+				<li id="howpersonal" class="hide">
+					<div class="collapsible-header hoverable"><i class="material-icons">accessibility</i>Really</div>
+					<div class="collapsible-body">
+						<div class="row">
+							<span>How well?</span>
+						</div>
+						<div class="row" style="text-align:center">
+							<div class="progress blue" id="howclose">
+								<div class="determinate red" id="thatclose" style="width: 50%">
+								</div>
+							</div>
+							<span class="left red-text">0</span>
+							<span class="right blue-text">1</span>
+						</div>
+					</div>
+				</li>
+
+				<li id="whyyouhere" class="hide">
+					<div class="collapsible-header hoverable"><i class="material-icons">accessibility</i>What</div>
+					<div class="collapsible-body">
+						<div class="row" id="whathererow">
+							<span>What interest's you about andrecowie.com?</span>
+							<input id="whytextinput" type="text" class="center-align white-text grey" />
+							<div class="center-align">
+								<button class="hoverable btn-floating btn waves-effect waves-dark grey center-align" id="whyhere"><i class="material-icons">send</i></button>
+							</div>
+						</div>
+						<div class="progress grey hide" id="whyyouhereloading">
+							<div class="indeterminate black"></div>
+						</div>
+					</div>
+
+				</li>
+			</ul>
+			<!-- <div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect waves-light btn-floating blue-grey darken-4"><i class="material-icons">zoom_out</i></a>
+			</div> -->
+		</div>
+		<div id="aboutme" class="modal">
+			<div class="modal-content">
+				<h4>About Me</h4>
+				<div class="row" style="min-width: 230px">
+					<span class="new badge green" style="margin: 0" data-badge-caption="Water">Drink More</span>
+					<span class="new badge blue" style="margin: 0" data-badge-caption="Harder">Play</span>
+					<span class="new badge red" style="margin: 0" data-badge-caption="Hard">Work</span>
+				</div>
+				<ul>
+					<li>
+						<p>I live in Auckland</p>
+					</li>
+					<li>
+						<p>I am 21 years old</p>
+					</li>
+					<li>
+						<p>I am in my final year of a Bachelor's Degree at AUT</p>
+					</li>
+				</ul>
+			</div>
+			<ul class="collapsible" data-collapsible="accordion">
+				<li>
+					<div class="collapsible-header"><i class="material-icons">business</i>Skills</div>
+					<div class="collapsible-body">
+						<div class="row">
+							<img src="https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/python.png" width="200" height="200" class="circle responsive-img" />
+							<span class="flow-text center-align right">I like to write code in python.</span>
+							<span class="flow-text center-align right">Websites and data-crunching.</span>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="collapsible-header"><i class="material-icons">schedule</i>Interests</div>
+					<div class="collapsible-body">
+						<div class="row">
+							<span>Do you know me personally?</span>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="collapsible-header"><i class="material-icons">contact_phone</i>Contact</div>
+					<div class="collapsible-body">
+						<div class="row">
+							<p class="flow-text right-align">drecowie@gmail.com</p>
+							<p class="flow-text right-align">0212367349</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<!-- <div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect waves-light btn-floating blue-grey darken-4"><i class="material-icons">zoom_out</i></a>
+			</div> -->
+		</div>
+	</div>
+	<div>
+		<div class="fixed-action-btn horizontal">
+			<a class="waves-effect waves-light btn-floating btn-large blue-grey darken-4 pulse">
+				<i class="large material-icons ">menu</i>
+			</a>
+			<ul>
+				<li><a class="waves-effect waves-dark btn-floating btn-small blue-grey lighten-3" href="#financeModal" onclick="financeReady()"><i style="color: black;" class="fa fa-bitcoin"></i></a></li>
+				<li><a class="waves-effect waves-light btn-floating btn-small blue-grey darken-3"><i class="material-icons">access_time</i></a></li>
+				<li><a class="waves-effect waves-dark btn-floating btn-small blue-grey lighten-2"><i style="color: black;" class="material-icons">pie_chart</i></a></li>
+				<li><a class="waves-effect waves-light btn-floating btn-small blue-grey darken-2"><i class="material-icons">pool</i></a></li>
+			</ul>
+		</div>
+
+		<div class="container">
+			<div id="financeModal" class="modal card blue-grey darken-4">
+				<div class="card-content white-text">
+					<h3>Finance</h3>
+					<span class="flow-text">Small pieces of functionality playing with currency api's.</span>
+				</div>
+				<div class="card-tabs">
+					<ul class="tabs tabs-fixed-width tabs-transparent">
+						<li class="tab"><a href="#currentFinance">Current</a></li>
+						<li class="tab"><a href="#pastFinance">Past</a></li>
+						<li class="tab"><a href="#futureFinance">Future</a></li>
+					</ul>
+				</div>
+				<div class="card-content grey lighten-4">
+					<div id="currentFinance">
+						<div class="row">
+
+							<div class="col s12 m6 l4">
+								<div class="card-panel blue-grey darken-4">
+									<p id="" class="white-text center-align"><i class="fa fa-bitcoin"></i></p>
+									<p id="currentBtcExc" class="white-text flow-text center-align"></p>
+									<p id="currentBtcCur" class="white-text center-align"></p>
+									<a class="right btn-floating btn-small blue-grey darken-3 waves-effect" onclick="changeBtcCur(true)"><i class="large material-icons">arrow_forward</i></a>
+									<a class="left btn-floating btn-small blue-grey darken-3 waves-effect" onclick="changeBtcCur(false)"><i class="large material-icons">arrow_back</i></a>
+								</div>
+							</div>
+
+							<div class="col s12 m6 l4">
+								<div class="card-panel blue-grey darken-4">
+									<p id="" class="white-text flow-text center-align"></p>
+									<p id="" class="white-text center-align"></p>
+									<a class="right btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(true)"><i class="large material-icons">arrow_forward</i></a>
+									<a class="left btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(false)"><i class="large material-icons">arrow_back</i></a>
+								</div>
+							</div>
+
+							<div class="col s12 m6 l4">
+								<div class="card-panel blue-grey darken-4">
+									<p id="" class="white-text flow-text center-align"></p>
+									<p id="" class="white-text center-align"></p>
+									<a class="right btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(true)"><i class="large material-icons">arrow_forward</i></a>
+									<a class="left btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(false)"><i class="large material-icons">arrow_back</i></a>
+								</div>
+							</div>
+
+							<div class="col s12 m6 l4">
+								<div class="card-panel blue-grey darken-4">
+									<p id="" class="white-text flow-text center-align"></p>
+									<p id="" class="white-text center-align"></p>
+									<a class="right btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(true)"><i class="large material-icons">arrow_forward</i></a>
+									<a class="left btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(false)"><i class="large material-icons">arrow_back</i></a>
+								</div>
+							</div>
+
+							<div class="col s12 m6 l4">
+								<div class="card-panel blue-grey darken-4">
+									<p id="" class="white-text flow-text center-align"></p>
+									<p id="" class="white-text center-align"></p>
+									<a class="right btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(true)"><i class="large material-icons">arrow_forward</i></a>
+									<a class="left btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(false)"><i class="large material-icons">arrow_back</i></a>
+								</div>
+							</div>
+
+							<div class="col s12 m6 l4">
+								<div class="card-panel blue-grey darken-4">
+									<p id="nzdto" class="white-text flow-text center-align">$1NZD</p>
+									<p id="nzdtoCur" class="white-text center-align"></p>
+									<a class="right btn-floating btn-small blue-grey darken-3 waves-effect" onclick="changeCur(true)"><i class="large material-icons">arrow_forward</i></a>
+									<a class="left btn-floating btn-small blue-grey darken-3 waves-effect" onclick="changeCur(false)"><i class="large material-icons">arrow_back</i></a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div id="pastFinance">Test 2</div>
+					<div id="futureFinance">Test 3</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="{{url_for('static', filename='js/particles.min.js')}}"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='js/materialize.min.js')}}"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='js/app.js')}}"></script>
+	<script>
+		$(document).ready(function() {
+			$('.modal').modal();
+		});
+	</script>
+</body>
+
+</html>
