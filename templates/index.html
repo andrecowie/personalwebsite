@@ -11,11 +11,11 @@
 
 	<!-- favicon images -->
 	<link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static' , filename='apple-touch-icon.png' )}}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static' , filename='favicon-32x32.png')}}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static' , filename='favicon-16x16.png')}}">
-<link rel="manifest" href="{{url_for('static' , filename='manifest.json')}}">
-<link rel="mask-icon" href="{{url_for('static' , filename='safari-pinned-tab.svg')}}" color="#5bbad5">
-<meta name="theme-color" content="#ffffff">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static' , filename='favicon-32x32.png')}}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static' , filename='favicon-16x16.png')}}">
+	<link rel="manifest" href="{{url_for('static' , filename='manifest.json')}}">
+	<link rel="mask-icon" href="{{url_for('static' , filename='safari-pinned-tab.svg')}}" color="#5bbad5">
+	<meta name="theme-color" content="#ffffff">
 
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -23,221 +23,457 @@
 
 <body>
 	<!--Import jQuery before materialize.js-->
+	<canvas class="fireworks"></canvas>
 	<div id="particles"></div>
 	<div class="container">
-		<div class="row" style="height:100%;display:flex;justify-content:center;">
-				<div class="valign-wrapper" style="height:100%; position:absolute;">
-					<a class="waves-effect waves-light btn-floating btn-large blue-grey pulse darken-4" href="#me"><i class="large material-icons">person_pin</i></a>
-				</div>
-		</div>
-		<div id="me" class="modal">
-			<div class="modal-content">
-				<h4>Andre Cowie        <a class="waves-effect waves-dark btn-floating white" href="#aboutme"><i class="material-icons grey-text darken-4">info_outline</i></a></h4>
-			</div>
 
-			<ul class="collapsible" data-collapsible="accordion">
-
-				<li id="welcome">
-					<div class="collapsible-header hoverable"><i class="material-icons">perm_identity</i>Welcome</div>
-					<div class="collapsible-body" id="welcomebody">
-						<div class="row">
-							<span>Do you know me?</span>
-						</div>
-						<div class="row" style="text-align:center">
-							<a class="waves-effect waves-light btn-floating blue-grey darken-4 hoverable" id="personalyes"><i class="large material-icons">done</i></a>
-							<a class="waves-effect waves-light btn-floating blue-grey darken-4 hoverable" id="personalno"><i class="large material-icons">not_interested</i></a>
-						</div>
-					</div>
-				</li>
-
-				<li id="howpersonal" class="hide">
-					<div class="collapsible-header hoverable"><i class="material-icons">accessibility</i>Really</div>
-					<div class="collapsible-body">
-						<div class="row">
-							<span>How well?</span>
-						</div>
-						<div class="row" style="text-align:center">
-							<div class="progress blue" id="howclose">
-								<div class="determinate red" id="thatclose" style="width: 50%">
-								</div>
-							</div>
-							<span class="left red-text">0</span>
-							<span class="right blue-text">1</span>
-						</div>
-					</div>
-				</li>
-
-				<li id="whyyouhere" class="hide">
-					<div class="collapsible-header hoverable"><i class="material-icons">accessibility</i>What</div>
-					<div class="collapsible-body">
-						<div class="row" id="whathererow">
-							<span>What interest's you about andrecowie.com?</span>
-							<input id="whytextinput" type="text" class="center-align white-text grey" />
-							<div class="center-align">
-								<button class="hoverable btn-floating btn waves-effect waves-dark grey center-align" id="whyhere"><i class="material-icons">send</i></button>
-							</div>
-						</div>
-						<div class="progress grey hide" id="whyyouhereloading">
-							<div class="indeterminate black"></div>
-						</div>
-					</div>
-
-				</li>
-			</ul>
-			<!-- <div class="modal-footer">
-				<a href="#!" class="modal-action modal-close waves-effect waves-light btn-floating blue-grey darken-4"><i class="material-icons">zoom_out</i></a>
-			</div> -->
-		</div>
-		<div id="aboutme" class="modal">
-			<div class="modal-content">
-				<h4>About Me</h4>
-				<div class="row" style="min-width: 230px">
-					<span class="new badge green" style="margin: 0" data-badge-caption="Water">Drink More</span>
-					<span class="new badge blue" style="margin: 0" data-badge-caption="Harder">Play</span>
-					<span class="new badge red" style="margin: 0" data-badge-caption="Hard">Work</span>
-				</div>
-				<ul>
-					<li>
-						<p>I live in Auckland</p>
-					</li>
-					<li>
-						<p>I am 21 years old</p>
-					</li>
-					<li>
-						<p>I am in my final year of a Bachelor's Degree at AUT</p>
-					</li>
-				</ul>
-			</div>
-			<ul class="collapsible" data-collapsible="accordion">
-				<li>
-					<div class="collapsible-header"><i class="material-icons">business</i>Skills</div>
-					<div class="collapsible-body">
-						<div class="row">
-							<img src="https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/python.png" width="200" height="200" class="circle responsive-img" />
-							<span class="flow-text center-align right">I like to write code in python.</span>
-							<span class="flow-text center-align right">Websites and data-crunching.</span>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="collapsible-header"><i class="material-icons">schedule</i>Interests</div>
-					<div class="collapsible-body">
-						<div class="row">
-							<span>Do you know me personally?</span>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="collapsible-header"><i class="material-icons">contact_phone</i>Contact</div>
-					<div class="collapsible-body">
-						<div class="row">
-							<p class="flow-text right-align">drecowie@gmail.com</p>
-							<p class="flow-text right-align">0212367349</p>
-						</div>
-					</div>
-				</li>
-			</ul>
-			<!-- <div class="modal-footer">
-				<a href="#!" class="modal-action modal-close waves-effect waves-light btn-floating blue-grey darken-4"><i class="material-icons">zoom_out</i></a>
-			</div> -->
-		</div>
 	</div>
-	<div>
-		<div class="fixed-action-btn horizontal">
-			<a class="waves-effect waves-light btn-floating btn-large blue-grey darken-4 pulse">
-				<i class="large material-icons ">menu</i>
-			</a>
-			<ul>
-				<li><a class="waves-effect waves-dark btn-floating btn-small blue-grey lighten-3" href="#financeModal" onclick="financeReady()"><i style="color: black;" class="fa fa-bitcoin"></i></a></li>
-				<li><a class="waves-effect waves-light btn-floating btn-small blue-grey darken-3"><i class="material-icons">access_time</i></a></li>
-				<li><a class="waves-effect waves-dark btn-floating btn-small blue-grey lighten-2"><i style="color: black;" class="material-icons">pie_chart</i></a></li>
-				<li><a class="waves-effect waves-light btn-floating btn-small blue-grey darken-2"><i class="material-icons">pool</i></a></li>
-			</ul>
-		</div>
+	<div id="abc">
+		<svg viewBox="0 0 366 211" preserveAspectRatio="xMidYMid meet">
+			<defs>
+          <radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="50%" id="radialGradient-1">
+            <stop stop-color="#329FFF" offset="0%"></stop>
+            <stop stop-color="#206EFF" offset="100%"></stop>
+          </radialGradient>
+          <radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="50%" id="radialGradient-2">
+            <stop stop-color="#FF7894" offset="0%"></stop>
+            <stop stop-color="#FF324A" offset="100%"></stop>
+          </radialGradient>
+          <radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="100%" id="radialGradient-3">
+            <stop stop-color="#FF7894" offset="0%"></stop>
+            <stop stop-color="#FF324A" offset="100%"></stop>
+          </radialGradient>
+          <radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="100%" id="radialGradient-4">
+            <stop stop-color="#359FFC" offset="0%"></stop>
+            <stop stop-color="#206EFF" offset="100%"></stop>
+          </radialGradient>
+          <radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="50%" id="radialGradient-5">
+            <stop stop-color="#5FFFD2" offset="0%"></stop>
+            <stop stop-color="#31FFA6" offset="100%"></stop>
+          </radialGradient>
+        </defs>
+			<g fill="none" fill-rule="evenodd" class="linez"  stroke="black">
+				<path id="lettera"
+			        fill="url(#radialGradient-5)" fill-opacity="0.9"
+			        d="M 89.91,126.80
+			           C 93.57,131.60 99.44,134.00 107.50,134.00
+			             115.56,134.00 123.33,130.73 130.80,124.20
+			             126.66,120.73 124.59,114.47 124.59,105.41
+			             124.59,96.34 126.69,82.40 130.89,63.61
+			             135.10,44.81 137.20,33.54 137.20,29.80
+			             137.20,19.27 132.33,14.00 122.59,14.00
+			             115.53,14.00 108.66,16.14 102.00,20.41
+			             101.86,17.61 101.39,14.34 100.59,10.59
+			             95.80,9.53 90.54,9.00 84.80,9.00
+			             62.66,9.00 44.16,16.47 29.30,31.41
+			             14.43,46.34 7.00,64.87 7.00,87.00
+			             7.00,101.27 10.40,112.67 17.20,121.20
+			             24.00,129.73 33.07,134.00 44.41,134.00
+			             52.66,134.00 60.16,131.30 66.89,125.91
+			             73.63,120.50 78.80,113.00 82.41,103.41
+			             82.41,103.41 84.41,104.41 84.41,104.41
+			             84.41,114.53 86.24,122.00 89.91,126.80 Z
+			           M 60.00,43.41
+			           C 70.27,33.67 82.13,28.80 95.59,28.80
+			             91.59,47.20 88.99,63.14 87.80,76.59
+			             84.46,83.14 80.33,88.27 75.39,92.00
+			             70.46,95.73 65.46,97.59 60.39,97.59
+			             55.33,97.59 51.43,95.83 48.69,92.30
+			             45.96,88.77 44.59,83.73 44.59,77.20
+			             44.59,64.40 49.73,53.14 60.00,43.41 Z" />
+									 <path id="letterb"
+								         fill="url(#radialGradient-4)" fill-opacity="0.8"
+								         d="M 122.39,174.61
+								            C 129.86,181.54 141.13,185.00 156.20,185.00
+								              165.40,185.00 174.66,183.33 184.00,180.00
+								              193.33,176.67 201.96,171.90 209.89,165.70
+								              217.83,159.51 224.30,151.38 229.30,141.31
+								              234.30,131.24 236.80,119.91 236.80,107.31
+								              236.80,94.71 233.86,83.98 228.00,75.11
+								              222.13,66.23 214.00,61.80 203.59,61.80
+								              185.20,61.80 171.20,71.34 161.59,90.41
+								              161.59,90.41 159.59,89.41 159.59,89.41
+								              164.80,64.47 167.41,47.73 167.41,39.20
+								              167.41,34.27 166.07,30.67 163.41,28.41
+								              160.74,26.14 156.57,25.00 150.91,25.00
+								              145.24,25.00 139.57,26.20 133.91,28.61
+								              128.24,31.01 121.27,34.67 113.00,39.59
+								              113.00,39.59 124.20,55.59 124.20,55.59
+								              115.54,102.00 111.20,130.80 111.20,142.00
+								              111.20,156.80 114.93,167.67 122.39,174.61 Z
+								            M 154.00,130.41
+								            C 155.47,123.20 157.37,116.73 159.70,111.00
+								              162.04,105.27 165.37,100.34 169.70,96.20
+								              174.04,92.07 178.73,90.00 183.80,90.00
+								              188.87,90.00 192.97,92.34 196.09,97.00
+								              199.23,101.67 200.80,106.87 200.80,112.59
+								              200.80,125.14 196.16,136.48 186.89,146.61
+								              177.63,156.73 165.60,161.80 150.80,161.80
+								              150.80,152.20 151.86,141.74 154.00,130.41 Z" />
+															<path id="letterc"
+														        fill="url(#radialGradient-3)" fill-opacity="0.9"
+														        d="M 225.30,188.50
+														           C 235.49,198.16 248.66,203.00 264.80,203.00
+														             280.93,203.00 293.93,199.57 303.80,192.70
+														             313.66,185.84 318.59,178.47 318.59,170.59
+														             318.59,161.40 308.86,156.80 289.41,156.80
+														             289.41,164.13 287.63,169.67 284.09,173.41
+														             280.56,177.14 275.99,179.00 270.39,179.00
+														             264.80,179.00 260.27,176.27 256.80,170.80
+														             253.33,165.33 251.59,158.20 251.59,149.41
+														             251.59,140.61 254.02,131.80 258.89,123.00
+														             263.77,114.20 270.40,108.06 278.80,104.59
+														             281.20,109.93 284.57,114.00 288.91,116.80
+														             293.24,119.60 298.04,121.00 303.30,121.00
+														             308.57,121.00 313.43,119.27 317.89,115.80
+														             322.36,112.33 324.59,107.33 324.59,100.80
+														             324.59,94.27 321.26,88.84 314.59,84.50
+														             307.93,80.17 298.86,78.00 287.41,78.00
+														             265.13,78.00 246.66,84.73 232.00,98.20
+														             217.33,111.67 210.00,129.07 210.00,150.41
+														             210.00,166.14 215.10,178.84 225.30,188.50 Z" />
+																				 <path id="fullstop"
+						 													        fill="url(#radialGradient-1)" fill-opacity="0.5"
+						 													        d="M 352.19,155.41
+						 													           C 357.12,150.34 359.59,144.63 359.59,138.30
+						 													             359.59,131.96 357.56,126.77 353.50,122.70
+						 													             349.44,118.63 344.13,116.59 337.59,116.59
+						 													             331.06,116.59 325.33,119.13 320.39,124.20
+						 													             315.46,129.27 313.00,134.96 313.00,141.30
+						 													             313.00,147.63 315.03,152.84 319.09,156.91
+						 													             323.16,160.97 328.47,163.00 335.00,163.00
+						 													             341.53,163.00 347.26,160.47 352.19,155.41 Z" />
+						 </g>
+						 <g fill="none" fill-rule="evenodd" class="namez"  stroke="black">
+							 <path id="ndre"
+						          fill="url(#radialGradient-4)" stroke="black" stroke-width="0.1" fill-opacity="0.5"
+						         d="M 25.08,124.56
+						            C 24.83,124.22 24.70,123.66 24.70,122.88
+						              24.70,122.09 24.84,121.31 25.11,120.55
+						              25.39,119.79 25.73,119.16 26.12,118.66
+						              26.53,118.16 26.95,117.76 27.38,117.47
+						              27.81,117.18 28.20,117.03 28.53,117.03
+						              28.94,117.03 29.14,117.30 29.14,117.84
+						              29.14,118.24 28.96,119.10 28.59,120.42
+						              28.24,121.73 28.06,122.67 28.06,123.22
+						              28.06,124.71 28.75,125.45 30.14,125.45
+						              30.85,125.45 31.52,125.16 32.16,124.56
+						              31.89,124.22 31.77,123.67 31.77,122.92
+						              31.77,122.16 31.94,121.04 32.30,119.55
+						              32.65,118.06 32.83,117.00 32.83,116.38
+						              32.83,114.93 32.10,114.20 30.66,114.20
+						              28.68,114.20 27.05,115.30 25.77,117.50
+						              25.77,117.50 25.58,117.41 25.58,117.41
+						              25.86,116.78 26.00,116.17 26.00,115.56
+						              26.00,114.66 25.49,114.20 24.48,114.20
+						              23.47,114.20 22.38,114.54 21.19,115.20
+						              21.19,115.20 22.12,116.64 22.12,116.64
+						              21.86,117.79 21.61,119.05 21.36,120.44
+						              21.11,121.81 20.98,122.81 20.98,123.42
+						              20.98,124.03 21.15,124.52 21.48,124.89
+						              21.83,125.27 22.35,125.45 23.06,125.45
+						              23.77,125.45 24.44,125.16 25.08,124.56 Z
+						            M 42.28,124.91
+						            C 42.61,125.27 43.14,125.45 43.88,125.45
+						              44.60,125.45 45.30,125.16 45.97,124.56
+						              45.59,124.23 45.41,123.53 45.41,122.47
+						              45.41,121.41 45.67,119.61 46.20,117.08
+						              46.74,114.55 47.02,113.01 47.02,112.47
+						              47.02,111.92 46.91,111.54 46.70,111.34
+						              46.50,111.15 46.16,111.05 45.66,111.05
+						              44.80,111.05 43.62,111.48 42.12,112.36
+						              42.12,112.36 43.12,113.80 43.12,113.80
+						              43.04,114.16 42.99,114.47 42.97,114.72
+						              42.41,114.68 42.03,114.66 41.81,114.66
+						              40.68,114.66 39.64,114.86 38.72,115.27
+						              37.79,115.66 37.05,116.18 36.50,116.83
+						              35.38,118.15 34.81,119.62 34.81,121.22
+						              34.81,122.51 35.14,123.54 35.81,124.31
+						              36.48,125.07 37.29,125.45 38.25,125.45
+						              39.54,125.45 40.66,124.84 41.59,123.59
+						              41.59,123.59 41.78,123.69 41.78,123.69
+						              41.78,124.14 41.95,124.54 42.28,124.91 Z
+						            M 39.42,117.56
+						            C 40.24,116.68 41.35,116.23 42.73,116.23
+						              42.38,117.80 42.11,119.65 41.92,121.78
+						              41.36,122.43 40.73,122.75 40.05,122.75
+						              39.52,122.75 39.07,122.55 38.72,122.16
+						              38.36,121.76 38.19,121.22 38.19,120.53
+						              38.19,119.44 38.60,118.45 39.42,117.56 Z
+						            M 50.03,125.45
+						            C 50.64,125.45 51.33,125.16 52.08,124.56
+						              51.83,124.22 51.70,123.68 51.70,122.94
+						              51.70,119.88 52.45,118.34 53.94,118.34
+						              54.91,118.34 55.65,118.11 56.14,117.64
+						              56.63,117.17 56.88,116.61 56.88,115.95
+						              56.88,115.51 56.72,115.11 56.41,114.75
+						              56.10,114.39 55.66,114.20 55.06,114.20
+						              53.78,114.20 52.71,115.49 51.84,118.06
+						              51.84,118.06 51.66,117.98 51.66,117.98
+						              52.05,116.65 52.25,115.78 52.25,115.36
+						              52.25,114.59 51.95,114.20 51.34,114.20
+						              50.74,114.20 49.69,114.54 48.19,115.20
+						              48.19,115.20 49.12,116.64 49.12,116.64
+						              48.86,117.79 48.61,119.05 48.36,120.44
+						              48.11,121.81 47.98,122.74 47.98,123.22
+						              47.98,124.71 48.66,125.45 50.03,125.45 Z
+						            M 66.28,124.53
+						            C 67.14,123.91 67.58,123.24 67.58,122.53
+						              67.58,121.71 66.70,121.30 64.95,121.30
+						              64.95,122.01 64.78,122.52 64.44,122.83
+						              64.10,123.14 63.70,123.30 63.23,123.30
+						              62.77,123.30 62.38,123.08 62.06,122.64
+						              61.75,122.20 61.57,121.59 61.53,120.83
+						              63.80,120.82 65.48,120.45 66.56,119.70
+						              67.66,118.96 68.20,118.04 68.20,116.92
+						              68.20,116.10 67.91,115.45 67.33,114.95
+						              66.75,114.45 65.91,114.20 64.80,114.20
+						              62.79,114.20 61.12,114.81 59.80,116.02
+						              58.47,117.21 57.81,118.78 57.81,120.72
+						              57.81,122.17 58.25,123.32 59.14,124.17
+						              60.04,125.02 61.30,125.45 62.95,125.45
+						              64.30,125.45 65.41,125.14 66.28,124.53 Z
+						            M 65.08,116.55
+						            C 65.23,116.70 65.31,116.90 65.31,117.14
+						              65.31,117.64 65.01,118.12 64.41,118.56
+						              63.80,119.01 62.90,119.29 61.70,119.39
+						              61.93,118.56 62.30,117.84 62.80,117.23
+						              63.30,116.62 63.87,116.31 64.48,116.31
+						              64.73,116.31 64.93,116.39 65.08,116.55 Z" />
 
-		<div class="container">
-			<div id="financeModal" class="modal card blue-grey darken-4">
-				<div class="card-content white-text">
-					<h3>Finance</h3>
-					<span class="flow-text">Small pieces of functionality playing with currency api's.</span>
-				</div>
-				<div class="card-tabs">
-					<ul class="tabs tabs-fixed-width tabs-transparent">
-						<li class="tab"><a href="#currentFinance">Current</a></li>
-						<li class="tab"><a href="#pastFinance">Past</a></li>
-						<li class="tab"><a href="#futureFinance">Future</a></li>
-					</ul>
-				</div>
-				<div class="card-content grey lighten-4">
-					<div id="currentFinance">
-						<div class="row">
+													<path id="arnes"
+																fill="url(#radialGradient-3)" stroke="black" stroke-width="0.1" fill-opacity="0.5"
+																d="M 135.17,178.81
+																	 C 135.50,179.24 136.04,179.45 136.77,179.45
+																		 137.49,179.45 138.19,179.16 138.86,178.56
+																		 138.48,178.25 138.30,177.69 138.30,176.88
+																		 138.30,176.06 138.48,174.81 138.86,173.12
+																		 139.24,171.43 139.44,170.41 139.44,170.08
+																		 139.44,169.13 139.00,168.66 138.12,168.66
+																		 137.49,168.66 136.87,168.84 136.27,169.22
+																		 136.25,168.97 136.21,168.68 136.14,168.34
+																		 135.71,168.25 135.24,168.20 134.72,168.20
+																		 132.73,168.20 131.06,168.88 129.72,170.22
+																		 128.38,171.56 127.72,173.23 127.72,175.22
+																		 127.72,176.50 128.02,177.53 128.64,178.30
+																		 129.25,179.07 130.07,179.45 131.09,179.45
+																		 131.83,179.45 132.50,179.21 133.11,178.72
+																		 133.71,178.23 134.18,177.56 134.50,176.70
+																		 134.50,176.70 134.69,176.78 134.69,176.78
+																		 134.69,177.70 134.85,178.38 135.17,178.81 Z
+																	 M 132.48,171.30
+																	 C 133.41,170.42 134.48,169.98 135.69,169.98
+																		 135.33,171.64 135.10,173.07 134.98,174.28
+																		 134.69,174.88 134.32,175.34 133.88,175.67
+																		 133.43,176.01 132.97,176.17 132.52,176.17
+																		 132.07,176.17 131.72,176.02 131.47,175.70
+																		 131.23,175.38 131.11,174.93 131.11,174.34
+																		 131.11,173.19 131.57,172.17 132.48,171.30 Z
+																	 M 143.03,179.45
+																	 C 143.64,179.45 144.33,179.16 145.08,178.56
+																		 144.83,178.22 144.70,177.68 144.70,176.94
+																		 144.70,173.88 145.45,172.34 146.94,172.34
+																		 147.91,172.34 148.65,172.11 149.14,171.64
+																		 149.63,171.17 149.88,170.61 149.88,169.95
+																		 149.88,169.51 149.72,169.11 149.41,168.75
+																		 149.10,168.39 148.66,168.20 148.06,168.20
+																		 146.78,168.20 145.71,169.49 144.84,172.06
+																		 144.84,172.06 144.66,171.98 144.66,171.98
+																		 145.05,170.65 145.25,169.78 145.25,169.36
+																		 145.25,168.59 144.95,168.20 144.34,168.20
+																		 143.74,168.20 142.69,168.54 141.19,169.20
+																		 141.19,169.20 142.12,170.64 142.12,170.64
+																		 141.86,171.79 141.61,173.05 141.36,174.44
+																		 141.11,175.81 140.98,176.74 140.98,177.22
+																		 140.98,178.71 141.66,179.45 143.03,179.45 Z
+																	 M 155.08,178.56
+																	 C 154.83,178.22 154.70,177.66 154.70,176.88
+																		 154.70,176.09 154.84,175.31 155.11,174.55
+																		 155.39,173.79 155.73,173.16 156.12,172.66
+																		 156.53,172.16 156.95,171.76 157.38,171.47
+																		 157.81,171.18 158.20,171.03 158.53,171.03
+																		 158.94,171.03 159.14,171.30 159.14,171.84
+																		 159.14,172.24 158.96,173.10 158.59,174.42
+																		 158.24,175.73 158.06,176.67 158.06,177.22
+																		 158.06,178.71 158.75,179.45 160.14,179.45
+																		 160.85,179.45 161.52,179.16 162.16,178.56
+																		 161.89,178.22 161.77,177.67 161.77,176.92
+																		 161.77,176.16 161.94,175.04 162.30,173.55
+																		 162.65,172.06 162.83,171.00 162.83,170.38
+																		 162.83,168.93 162.10,168.20 160.66,168.20
+																		 158.68,168.20 157.05,169.30 155.77,171.50
+																		 155.77,171.50 155.58,171.41 155.58,171.41
+																		 155.86,170.78 156.00,170.17 156.00,169.56
+																		 156.00,168.66 155.49,168.20 154.48,168.20
+																		 153.47,168.20 152.38,168.54 151.19,169.20
+																		 151.19,169.20 152.12,170.64 152.12,170.64
+																		 151.86,171.79 151.61,173.05 151.36,174.44
+																		 151.11,175.81 150.98,176.81 150.98,177.42
+																		 150.98,178.03 151.15,178.52 151.48,178.89
+																		 151.83,179.27 152.35,179.45 153.06,179.45
+																		 153.77,179.45 154.44,179.16 155.08,178.56 Z
+																	 M 173.28,178.53
+																	 C 174.14,177.91 174.58,177.24 174.58,176.53
+																		 174.58,175.71 173.70,175.30 171.95,175.30
+																		 171.95,176.01 171.78,176.52 171.44,176.83
+																		 171.10,177.14 170.70,177.30 170.23,177.30
+																		 169.77,177.30 169.38,177.08 169.06,176.64
+																		 168.75,176.20 168.57,175.59 168.53,174.83
+																		 170.80,174.82 172.48,174.45 173.56,173.70
+																		 174.66,172.96 175.20,172.04 175.20,170.92
+																		 175.20,170.10 174.91,169.45 174.33,168.95
+																		 173.75,168.45 172.91,168.20 171.80,168.20
+																		 169.79,168.20 168.12,168.81 166.80,170.02
+																		 165.47,171.21 164.81,172.78 164.81,174.72
+																		 164.81,176.17 165.25,177.32 166.14,178.17
+																		 167.04,179.02 168.30,179.45 169.95,179.45
+																		 171.30,179.45 172.41,179.14 173.28,178.53 Z
+																	 M 172.08,170.55
+																	 C 172.23,170.70 172.31,170.90 172.31,171.14
+																		 172.31,171.64 172.01,172.12 171.41,172.56
+																		 170.80,173.01 169.90,173.29 168.70,173.39
+																		 168.93,172.56 169.30,171.84 169.80,171.23
+																		 170.30,170.62 170.87,170.31 171.48,170.31
+																		 171.73,170.31 171.93,170.39 172.08,170.55 Z
+																	 M 183.64,171.69
+																	 C 184.02,171.94 184.45,172.06 184.92,172.06
+																		 185.40,172.06 185.84,171.91 186.25,171.61
+																		 186.66,171.30 186.86,170.86 186.86,170.28
+																		 186.86,169.70 186.51,169.21 185.81,168.81
+																		 185.12,168.41 184.25,168.20 183.19,168.20
+																		 182.12,168.20 181.17,168.32 180.33,168.56
+																		 179.48,168.79 178.77,169.20 178.20,169.80
+																		 177.63,170.38 177.34,171.11 177.34,171.97
+																		 177.34,173.05 177.75,173.90 178.56,174.50
+																		 179.38,175.11 180.71,175.51 182.53,175.72
+																		 182.33,176.59 181.73,177.03 180.73,177.03
+																		 180.16,177.03 179.57,176.89 178.95,176.59
+																		 178.35,176.29 177.90,175.93 177.61,175.52
+																		 177.02,176.17 176.72,176.83 176.72,177.48
+																		 176.72,178.80 178.24,179.45 181.28,179.45
+																		 182.34,179.45 183.43,179.22 184.53,178.75
+																		 185.09,178.50 185.56,178.13 185.94,177.64
+																		 186.31,177.15 186.50,176.58 186.50,175.92
+																		 186.50,174.88 186.08,174.08 185.25,173.52
+																		 184.43,172.95 183.00,172.51 180.97,172.22
+																		 181.18,171.76 181.41,171.41 181.67,171.17
+																		 181.93,170.92 182.29,170.73 182.73,170.59
+																		 182.95,171.07 183.25,171.44 183.64,171.69 Z" />
+													<path id="owie"
+												        fill="url(#radialGradient-5)" stroke="black" stroke-width="0.1" fill-opacity="0.5"
+												        d="M 249.92,187.69
+												           C 249.91,187.19 249.84,186.74 249.72,186.34
+												             249.28,186.25 248.85,186.20 248.42,186.20
+												             246.49,186.20 244.91,186.81 243.67,188.02
+												             242.43,189.21 241.81,190.78 241.81,192.72
+												             241.81,194.15 242.27,195.29 243.17,196.16
+												             244.09,197.02 245.33,197.45 246.91,197.45
+												             247.69,197.45 248.45,197.30 249.19,197.00
+												             249.94,196.69 250.60,196.26 251.19,195.70
+												             251.77,195.15 252.24,194.45 252.61,193.58
+												             252.97,192.70 253.16,191.76 253.16,190.73
+												             253.16,189.70 252.91,188.92 252.42,188.38
+												             251.93,187.84 251.35,187.56 250.69,187.56
+												             250.44,187.56 250.18,187.61 249.92,187.69 Z
+												           M 249.92,192.84
+												           C 249.42,194.44 248.56,195.23 247.34,195.23
+												             246.79,195.23 246.34,194.98 245.98,194.45
+												             245.63,193.93 245.45,193.24 245.45,192.38
+												             245.45,191.51 245.71,190.67 246.22,189.86
+												             246.82,188.91 247.91,188.27 249.50,187.92
+												             249.13,188.18 248.87,188.52 248.70,188.94
+												             248.55,189.36 248.47,189.73 248.47,190.06
+												             248.47,191.31 248.95,192.24 249.92,192.84 Z
+												           M 256.44,196.98
+												           C 256.91,197.30 257.50,197.45 258.19,197.45
+												             259.45,197.45 260.64,196.91 261.78,195.81
+												             262.03,196.91 262.78,197.45 264.03,197.45
+												             264.81,197.45 265.67,197.26 266.61,196.88
+												             267.55,196.49 268.25,196.12 268.72,195.77
+												             268.72,195.77 268.47,194.72 268.47,194.72
+												             268.50,194.67 268.79,194.03 269.33,192.81
+												             269.87,191.59 270.27,190.60 270.53,189.83
+												             270.80,189.06 270.94,188.41 270.94,187.89
+												             270.94,186.77 270.45,186.20 269.47,186.20
+												             268.71,186.20 267.92,186.46 267.11,186.97
+												             267.21,187.24 267.27,187.51 267.27,187.78
+												             267.27,188.54 266.98,189.65 266.41,191.11
+												             265.84,192.56 265.22,193.94 264.53,195.25
+												             264.53,195.25 263.92,195.25 263.92,195.25
+												             263.92,195.25 263.98,190.94 263.98,190.94
+												             264.05,190.73 264.14,190.47 264.25,190.16
+												             264.36,189.84 264.47,189.53 264.58,189.23
+												             264.69,188.93 264.75,188.61 264.75,188.27
+												             264.75,187.73 264.55,187.32 264.16,187.05
+												             263.77,186.77 263.35,186.62 262.89,186.62
+												             262.43,186.62 262.02,186.70 261.64,186.86
+												             261.27,187.01 261.00,187.20 260.83,187.42
+												             261.02,187.75 261.19,188.31 261.34,189.11
+												             261.51,189.90 261.60,190.61 261.61,191.22
+												             261.41,192.20 260.81,193.54 259.81,195.25
+												             259.81,195.25 259.20,195.25 259.20,195.25
+												             259.27,193.84 259.30,192.36 259.30,190.83
+												             259.30,189.29 259.12,188.13 258.77,187.36
+												             258.42,186.59 257.79,186.20 256.86,186.20
+												             256.12,186.20 255.44,186.46 254.81,186.97
+												             255.46,187.65 255.78,188.68 255.78,190.06
+												             255.78,191.00 255.77,192.78 255.73,195.39
+												             255.73,196.13 255.97,196.66 256.44,196.98 Z
+												           M 277.27,182.30
+												           C 276.91,182.06 276.45,181.94 275.88,181.94
+												             275.30,181.94 274.75,182.09 274.23,182.41
+												             273.72,182.72 273.47,183.15 273.47,183.70
+												             273.47,184.11 273.64,184.43 274.00,184.67
+												             274.35,184.91 274.83,185.03 275.44,185.03
+												             276.05,185.03 276.60,184.87 277.08,184.55
+												             277.55,184.21 277.80,183.82 277.80,183.36
+												             277.80,182.89 277.62,182.54 277.27,182.30 Z
+												           M 276.44,196.56
+												           C 276.06,196.24 275.88,195.67 275.88,194.84
+												             275.88,194.01 276.09,192.63 276.53,190.70
+												             276.98,188.77 277.20,187.71 277.20,187.53
+												             277.20,187.06 277.10,186.73 276.89,186.52
+												             276.69,186.31 276.35,186.20 275.86,186.20
+												             274.99,186.20 273.81,186.65 272.31,187.55
+												             272.31,187.55 273.33,189.06 273.33,189.06
+												             272.55,192.39 272.17,194.43 272.17,195.19
+												             272.17,195.95 272.34,196.52 272.67,196.89
+												             273.00,197.27 273.55,197.45 274.30,197.45
+												             275.05,197.45 275.76,197.16 276.44,196.56 Z
+												           M 287.28,196.53
+												           C 288.14,195.91 288.58,195.24 288.58,194.53
+												             288.58,193.71 287.70,193.30 285.95,193.30
+												             285.95,194.01 285.78,194.52 285.44,194.83
+												             285.10,195.14 284.70,195.30 284.23,195.30
+												             283.77,195.30 283.38,195.08 283.06,194.64
+												             282.75,194.20 282.57,193.59 282.53,192.83
+												             284.80,192.82 286.48,192.45 287.56,191.70
+												             288.66,190.96 289.20,190.04 289.20,188.92
+												             289.20,188.10 288.91,187.45 288.33,186.95
+												             287.75,186.45 286.91,186.20 285.80,186.20
+												             283.79,186.20 282.12,186.81 280.80,188.02
+												             279.47,189.21 278.81,190.78 278.81,192.72
+												             278.81,194.17 279.25,195.32 280.14,196.17
+												             281.04,197.02 282.30,197.45 283.95,197.45
+												             285.30,197.45 286.41,197.14 287.28,196.53 Z
+												           M 286.08,188.55
+												           C 286.23,188.70 286.31,188.90 286.31,189.14
+												             286.31,189.64 286.01,190.12 285.41,190.56
+												             284.80,191.01 283.90,191.29 282.70,191.39
+												             282.93,190.56 283.30,189.84 283.80,189.23
+												             284.30,188.62 284.87,188.31 285.48,188.31
+												             285.73,188.31 285.93,188.39 286.08,188.55 Z" />
 
-							<div class="col s12 m6 l4">
-								<div class="card-panel blue-grey darken-4">
-									<p id="" class="white-text center-align"><i class="fa fa-bitcoin"></i></p>
-									<p id="currentBtcExc" class="white-text flow-text center-align"></p>
-									<p id="currentBtcCur" class="white-text center-align"></p>
-									<a class="right btn-floating btn-small blue-grey darken-3 waves-effect" onclick="changeBtcCur(true)"><i class="large material-icons">arrow_forward</i></a>
-									<a class="left btn-floating btn-small blue-grey darken-3 waves-effect" onclick="changeBtcCur(false)"><i class="large material-icons">arrow_back</i></a>
-								</div>
-							</div>
-
-							<div class="col s12 m6 l4">
-								<div class="card-panel blue-grey darken-4">
-									<p id="" class="white-text flow-text center-align"></p>
-									<p id="" class="white-text center-align"></p>
-									<a class="right btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(true)"><i class="large material-icons">arrow_forward</i></a>
-									<a class="left btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(false)"><i class="large material-icons">arrow_back</i></a>
-								</div>
-							</div>
-
-							<div class="col s12 m6 l4">
-								<div class="card-panel blue-grey darken-4">
-									<p id="" class="white-text flow-text center-align"></p>
-									<p id="" class="white-text center-align"></p>
-									<a class="right btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(true)"><i class="large material-icons">arrow_forward</i></a>
-									<a class="left btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(false)"><i class="large material-icons">arrow_back</i></a>
-								</div>
-							</div>
-
-							<div class="col s12 m6 l4">
-								<div class="card-panel blue-grey darken-4">
-									<p id="" class="white-text flow-text center-align"></p>
-									<p id="" class="white-text center-align"></p>
-									<a class="right btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(true)"><i class="large material-icons">arrow_forward</i></a>
-									<a class="left btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(false)"><i class="large material-icons">arrow_back</i></a>
-								</div>
-							</div>
-
-							<div class="col s12 m6 l4">
-								<div class="card-panel blue-grey darken-4">
-									<p id="" class="white-text flow-text center-align"></p>
-									<p id="" class="white-text center-align"></p>
-									<a class="right btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(true)"><i class="large material-icons">arrow_forward</i></a>
-									<a class="left btn-floating btn-small blue-grey darken-3 waves-effect" onclick="(false)"><i class="large material-icons">arrow_back</i></a>
-								</div>
-							</div>
-
-							<div class="col s12 m6 l4">
-								<div class="card-panel blue-grey darken-4">
-									<p id="nzdto" class="white-text flow-text center-align">$1NZD</p>
-									<p id="nzdtoCur" class="white-text center-align"></p>
-									<a class="right btn-floating btn-small blue-grey darken-3 waves-effect" onclick="changeCur(true)"><i class="large material-icons">arrow_forward</i></a>
-									<a class="left btn-floating btn-small blue-grey darken-3 waves-effect" onclick="changeCur(false)"><i class="large material-icons">arrow_back</i></a>
-								</div>
-							</div>
-
-						</div>
-					</div>
-					<div id="pastFinance">Test 2</div>
-					<div id="futureFinance">Test 3</div>
-				</div>
-			</div>
-		</div>
+						 </g>
+	</svg>
 	</div>
+
+
 
 	<script type="text/javascript" src="{{url_for('static', filename='js/particles.min.js')}}"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='js/anime.min.js')}}"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
 	<script type="text/javascript" src="{{url_for('static', filename='js/materialize.min.js')}}"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='js/app.js')}}"></script>
 	<script>

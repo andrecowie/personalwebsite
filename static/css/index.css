@@ -1,15 +1,34 @@
-#particles{
+body{
+  padding: 0px;
+  margin: 0px;
+}
+canvas{
   width: 100%;
   height: 100%;
+}
+#particles{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  top: 0px;
+  left: 0px;
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  position: absolute;
 }
-
-#whytextinput:focus{
-	border-bottom: 1px solid black;
--webkit-box-shadow: 0 1px 0 0 black;
--moz-box-shadow: 0 1px 0 0 black;
-box-shadow: 0 1px 0 0 black;
+#abc{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.lines{
+  mix-blend-mode: lighten;
+}
+.fireworks {
+  position: absolute;
+	top: 0;
+	left: 0;
+  width: 100%;
+  height: 100%;
 }
