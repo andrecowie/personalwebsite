@@ -25,4 +25,4 @@ def whosAndreToRandom():
 app.secret_key = "eworuq859r"
 
 if __name__ == "__main__":
-	app.run()
+	app.run(debug=True)

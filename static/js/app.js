@@ -3,169 +3,182 @@ particlesJS.load('particles', './static/js/particle-config.json', function() {})
 var setDashoffset = function(el) {
     var l = el.getTotalLength();
     el.setAttribute('stroke-dasharray', l);
-    return [l,0];
-  }
+    return [0, l];
+}
 
+// anime({
+//   targets: "#interact",
+//   rotate: anime.random(-3600, 3600),
+//   loop: true
+// })
 var timeline = anime.timeline();
+
+//
+// var timeline = anime.timeline();
 timeline.add({
-   targets: '.linez',
-   opacity: [0, 1],
-   duration: 500,
-   easing: 'linear'
- });
- timeline.add({
-      targets: '#abc .linez path',
-    strokeDashoffset: {
-      value: setDashoffset,
-      duration: 1700,
-      easing: 'easeInOutQuad'
-    },
-    transform: ['translate(0 256)', 'translate(0 0)'],
-    offset: "-=500"
+    targets: '#abc .linez path#andre',
+    translateY: [-10, 0, 0, 0, 0],
+    translateX: [100, 175, 20, 0, 0],
+    scale: [{value: 0.5, duration: 1000, elasticity: 10000, easing: 'easeInOutBack'},{value: 0.7, duration: 1000, elasticity: 0, easing: 'easeInOutBack'},{value: 0.7, duration: 1000, elasticity: 0, easing: 'easeInOutBack'},{value: 0.2, duration: 1000, elasticity: 100, easing: 'easeInOutBack'},{value: 1, duration: 1000, elasticity: 1, easing: 'easeInBack'}],
+    duration: 5000,
+
+    direction: 'alternate'
   });
-timeline.add({
-  targets: '#abc .linez path',
-  strokeDashoffset: [anime.setDashoffset, 0],
-    easing: 'easeInOutSine',
-    duration: 1500,
-    delay: function(el, i) { return i * 250 },
-    loop: false,
-    offset: "-=1800"
-});
-
-
-
-
+  timeline.add({
+      targets: '#abc .linez path#cowie',
+      translateY: [30, 0, 0, 0, 0],
+      translateX: [0,100,0, -250,0, 0,0, 0,0, 0],
+      scale: [{value: 0.5, duration: 1000, elasticity: 10000, easing: 'easeInOutBack'},{value: 0.7, duration: 1000, elasticity: 0, easing: 'easeInOutBack'},{value: 0.7, duration: 1000, elasticity: 0, easing: 'easeInOutBack'},{value: 0.2, duration: 1000, elasticity: 100, easing: 'easeInOutBack'},{value: 1, duration: 1000, elasticity: 1, easing: 'easeInBack'}],
+      duration: 5000,
+      offset: "-=5000",
+      direction: 'alternate',
+      complete: function(){
+        $('.modal').modal();
+        $('#modal1').modal('open');
+      }
+    })
 
 var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
 var fireworks = (function() {
 
-  var getFontSize = function() {
-    return parseFloat(getComputedStyle(document.documentElement).fontSize);
-  }
-
-  var canvas = document.querySelector('.fireworks');
-  var ctx = canvas.getContext('2d');
-  var numberOfParticules = 24;
-  var distance = 200;
-  var x = 0;
-  var y = 0;
-  var animations = [];
-
-  var setCanvasSize = function() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-
-  var updateCoords = function(e) {
-    x = e.clientX || e.touches[0].clientX;
-    y = e.clientY || e.touches[0].clientY;
-  }
-
-  var colors = ['#FF324A', '#31FFA6', '#206EFF', '#FFFF99', '#11AE00', '#9200AE'];
-
-  var createCircle = function(x,y) {
-    var p = {};
-    p.x = x;
-    p.y = y;
-    p.color = colors[anime.random(0, colors.length - 1)];
-    p.color = colors[Math.floor(Math.random()*colors.length)];;
-    p.radius = 0;
-    p.alpha = 1;
-    p.lineWidth = 6;
-    p.draw = function() {
-      ctx.globalAlpha = p.alpha;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI, true);
-      ctx.lineWidth = p.lineWidth;
-      ctx.strokeStyle = p.color;
-      ctx.stroke();
-      ctx.globalAlpha = 1;
+    var getFontSize = function() {
+        return parseFloat(getComputedStyle(document.documentElement).fontSize);
     }
-    return p;
-  }
 
-  var createParticule = function(x,y) {
-    var p = {};
-    p.x = x;
-    p.y = y;
-    p.color = colors[anime.random(0, colors.length - 1)];
-    p.radius = anime.random(getFontSize(), getFontSize() * 2);
-    p.draw = function() {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI, true);
-      ctx.fillStyle = p.color;
-      ctx.fill();
+    var canvas = document.querySelector('.fireworks');
+    var ctx = canvas.getContext('2d');
+    var numberOfParticules = 24;
+    var distance = 200;
+    var x = 0;
+    var y = 0;
+    var animations = [];
+
+    var setCanvasSize = function() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
     }
-    return p;
-  }
 
-  var createParticles = function(x,y) {
-    var particules = [];
-    for (var i = 0; i < numberOfParticules; i++) {
-      var p = createParticule(x, y);
-      particules.push(p);
+    var updateCoords = function(e) {
+        x = e.clientX || e.touches[0].clientX;
+        y = e.clientY || e.touches[0].clientY;
     }
-    return particules;
-  }
 
-  var removeAnimation = function(animation) {
-    var index = animations.indexOf(animation);
-    if (index > -1) animations.splice(index, 1);
-  }
+    var colors = ['#FF324A', '#31FFA6', '#206EFF', '#FFFF99', '#11AE00', '#9200AE'];
 
-  var animateParticules = function(x, y) {
-    setCanvasSize();
-    var particules = createParticles(x, y);
-    var circle = createCircle(x, y);
-    var particulesAnimation = anime({
-      targets: particules,
-      x: function(p) { return p.x + anime.random(-distance, distance); },
-      y: function(p) { return p.y + anime.random(-distance, distance); },
-      radius: 0,
-      duration: function() { return anime.random(1200, 1800); },
-      easing: 'easeOutExpo',
-      complete: removeAnimation
-    });
-    var circleAnimation = anime({
-      targets: circle,
-      radius: function() { return anime.random(getFontSize() * 8.75, getFontSize() * 11.25); },
-      lineWidth: 0,
-      alpha: {
-        value: 0,
-        easing: 'linear',
-        duration: function() { return anime.random(400, 600); }
-      },
-      duration: function() { return anime.random(1200, 1800); },
-      easing: 'easeOutExpo',
-      complete: removeAnimation
-    });
-    animations.push(particulesAnimation);
-    animations.push(circleAnimation);
-  }
+    var createCircle = function(x, y) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.color = colors[anime.random(0, colors.length - 1)];
+        p.color = colors[Math.floor(Math.random() * colors.length)];;
+        p.radius = 0;
+        p.alpha = 1;
+        p.lineWidth = 6;
+        p.draw = function() {
+            ctx.globalAlpha = p.alpha;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI, true);
+            ctx.lineWidth = p.lineWidth;
+            ctx.strokeStyle = p.color;
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+        }
+        return p;
+    }
 
-  var mainLoop = anime({
-    duration: Infinity,
-    update: function() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      animations.forEach(function(anim) {
-        anim.animatables.forEach(function(animatable) {
-          animatable.target.draw();
+    var createParticule = function(x, y) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.color = colors[anime.random(0, colors.length - 1)];
+        p.radius = anime.random(getFontSize(), getFontSize() * 2);
+        p.draw = function() {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI, true);
+            ctx.fillStyle = p.color;
+            ctx.fill();
+        }
+        return p;
+    }
+
+    var createParticles = function(x, y) {
+        var particules = [];
+        for (var i = 0; i < numberOfParticules; i++) {
+            var p = createParticule(x, y);
+            particules.push(p);
+        }
+        return particules;
+    }
+
+    var removeAnimation = function(animation) {
+        var index = animations.indexOf(animation);
+        if (index > -1) animations.splice(index, 1);
+    }
+
+    var animateParticules = function(x, y) {
+        setCanvasSize();
+        var particules = createParticles(x, y);
+        var circle = createCircle(x, y);
+        var particulesAnimation = anime({
+            targets: particules,
+            x: function(p) {
+                return p.x + anime.random(-distance, distance);
+            },
+            y: function(p) {
+                return p.y + anime.random(-distance, distance);
+            },
+            radius: 0,
+            duration: function() {
+                return anime.random(1200, 1800);
+            },
+            easing: 'easeOutExpo',
+            complete: removeAnimation
         });
-      });
+        var circleAnimation = anime({
+            targets: circle,
+            radius: function() {
+                return anime.random(getFontSize() * 8.75, getFontSize() * 11.25);
+            },
+            lineWidth: 0,
+            alpha: {
+                value: 0,
+                easing: 'linear',
+                duration: function() {
+                    return anime.random(400, 600);
+                }
+            },
+            duration: function() {
+                return anime.random(1200, 1800);
+            },
+            easing: 'easeOutExpo',
+            complete: removeAnimation
+        });
+        animations.push(particulesAnimation);
+        animations.push(circleAnimation);
     }
-  });
 
-  document.addEventListener(tap, function(e) {
-    updateCoords(e);
-    animateParticules(x, y);
-  }, false);
+    var mainLoop = anime({
+        duration: Infinity,
+        update: function() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            animations.forEach(function(anim) {
+                anim.animatables.forEach(function(animatable) {
+                    animatable.target.draw();
+                });
+            });
+        }
+    });
 
-  window.addEventListener('resize', setCanvasSize, false);
+    document.addEventListener(tap, function(e) {
+        updateCoords(e);
+        animateParticules(x, y);
+    }, false);
 
-  return {
-    boom: animateParticules
-  }
+    window.addEventListener('resize', setCanvasSize, false);
+
+    return {
+        boom: animateParticules
+    }
 
 })();
 
