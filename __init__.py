@@ -11,10 +11,19 @@ app = Flask(__name__)
 def home():
 	return render_template("index.html")
 
-@app.route('/personal', methods=['POST'])
-def personal():
-	print (request.json['answer'])
-	return "Success"
+
+@app.route('/m')
+def more():
+	return render_template("more.html")
+
+@app.route('/purchase/coffee', methods=['POST', 'GET'])
+def ijustboughtacoffee():
+	if request.method == 'POST':
+		print(request.form)
+		return "Enjoy your coffee"
+	elif request.method == 'GET':
+		return render_template("coffee.html")
+
 
 
 @app.route('/whatHereFor', methods=['POST'])
