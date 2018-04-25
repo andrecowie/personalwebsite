@@ -12,9 +12,17 @@ def home():
 	return render_template("index.html")
 
 
-@app.route('/m')
-def more():
-	return render_template("more.html")
+@app.route('/visualisations')
+def visualisations():
+	return render_template("visualisations.html")
+
+@app.route('/gallery')
+def gallery():
+	return render_template("posts.html")
+
+@app.route('/posts')
+def posts():
+	return render_template("posts.html")
 
 @app.route('/purchase/coffee', methods=['POST', 'GET'])
 def ijustboughtacoffee():

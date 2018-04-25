@@ -15,6 +15,7 @@ canvas{
   background-color: rgba(255,255,255,0.5);
   box-shadow: 0 0 100px 30px rgba(255,255,255,0.5);
 }
+
 .contactcard{
   border-radius: 90px;
   opacity: 0.90;
@@ -29,11 +30,9 @@ canvas{
 .nomargin{
   margin: 0;
 }
-#more{
-  font-size: 0.75em;
-}
-#contact{
-  margin-right: 20%;
+
+.classy-chat{
+  margin-left: 20%;
   font-size: 0.75em;
 }
 #particles{
