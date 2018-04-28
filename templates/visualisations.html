@@ -25,15 +25,25 @@
 	<canvas class="fireworks"></canvas>
 
 	<div class="container" style="height: 100vh;">
-		<h3>Hello</h3>
+		<span class="flow-text" id="visualisations-heading"></span>
+		<svg width="960" height="500"></svg>
 	</div>
+
 	<div id="particles"></div>
 	<script type="text/javascript" src="{{url_for('static', filename='js/particles.min.js')}}"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='js/anime.min.js')}}"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='js/typed.js')}}"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='js/materialize.min.js')}}"></script>
-	<script type="text/javascript" src="{{url_for('static', filename='js/coffees.js')}}"></script>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-dsv/1.0.8/d3-dsv.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-time-format/2.1.1/d3-time-format.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-scale/1.0.7/d3-scale.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-array/1.2.1/d3-array.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-axis/1.0.8/d3-axis.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-shape/1.2.0/d3-shape.js"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='js/visualisations/visualisations.js')}}"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='js/visualisations/coffees.js')}}"></script>
 	<script>
 	</script>
 </body>

@@ -18,7 +18,7 @@ def visualisations():
 
 @app.route('/gallery')
 def gallery():
-	return render_template("posts.html")
+	return render_template("gallery.html")
 
 @app.route('/posts')
 def posts():
@@ -31,8 +31,6 @@ def ijustboughtacoffee():
 		return "Enjoy your coffee"
 	elif request.method == 'GET':
 		return render_template("coffee.html")
-
-
 
 @app.route('/whatHereFor', methods=['POST'])
 def whosAndreToRandom():
