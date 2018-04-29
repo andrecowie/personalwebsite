@@ -1,5 +1,4 @@
-import boto3
-import json
+import boto3, json, datetime
 from flask import Flask, url_for, redirect, session, render_template, request, Response
 from passlib.hash import sha256_crypt
 from pynamodb.models import Model
@@ -7,9 +6,12 @@ from pynamodb.attributes import UnicodeAttribute, NumberAttribute, BooleanAttrib
 
 app = Flask(__name__)
 
+
+
 @app.route('/')
 def home():
-	return render_template("index.html")
+	blogposts= [{'title': 'Floods in Auckland', 'subtitle': 'How long till we are underwater?', 'img': '/static/img/tamaki_drive.jpg'}]
+	return render_template("index.html", datetime=datetime, blog = blogposts)
 
 
 @app.route('/visualisations')

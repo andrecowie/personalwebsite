@@ -24,22 +24,101 @@
 <body>
 	<!-- <canvas class="fireworks"></canvas> -->
 
-	<div class="container" style="height: 100vh;">
-		<div class="myheading">
-			<span class="flow-text" id="andrecowie"></span>
-			<br/>
-			<a class="black-text classy-chat" href="#contact" id="contact"></a><br />
-			<a class="black-text classy-chat" href="#" id="more"></a><br/>
-			<a class="black-text classy-chat" href="visualisations" id="visualisations"></a><br />
-			<a class="black-text classy-chat" href="posts" id="posts"></a><br />
-			<a class="black-text classy-chat" href="gallery" id="gallery"></a><br />
+	<div class="container" style="margin-top: 1vh">
+		<div class="row valign-wrapper">
+			<div class="col s12 center-align">
+				<span class="flow-text grey darken-4 white-text ">KIA ORA!</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col offset-s2 s8 m4 l3">
+				<img class="responsive-img circle z-depth-5" src="{{url_for('static', filename='img/me.png')}}" />
+			</div>
+			<div class="col s8 offset-s2 offset-m1 m7 offset-l1 l4 center-align">
+				<span class="flow-text" style="font-size:1em">
+					I'm André, a recent graduate in Software and Artificial Intelligence. I have been working at Air New Zealand as a data engineer/scientist for {{ (datetime.datetime.now() - datetime.datetime(year=2016, day =1, month=11)).days}} days. I have lived in Auckland my whole life and I enjoy hopping around New Zealand travelling.<hr />
+					When I'm not at work you will find me:
+					<ul>
+						<li>Coding, Creating, Gaming & Making Plays  </li>
+						<li>Socialising, Dancing, Drinking & Vibing</li>
+						<li>Gyming, Swimming, Surfing & Sitting</li>
+						<li>Taking Photos, Videos, Profits & lots of Coffee</li>
+					</ul>
+					<hr />
+					I am developing this website to reshape my personal brand. I will be posting my thoughts and my photos. I will also try to educate by noting more of my personal development through this site.
+				</span>
+			</div>
+			<div class="col offset-l1 l2 center-align hide-on-med-and-down">
+				<a class="waves-effect waves-light btn-large white black-text" style="display:block;margin-top:2px;" href="https://www.facebook.com/andrebarnescowie">FACEBOOK</a>
+				<a class="waves-effect waves-light btn-large white black-text" style="display:block;margin-top:2px;" href="https://www.instagram.com/andrecowie/">INSTAGRAM</a>
+				<a class="waves-effect waves-light btn-large white black-text" style="display:block;margin-top:2px;" href="https://www.linkedin.com/in/andre-cowie-543540126/">LINKEDIN</a>
+				<a class="waves-effect waves-light btn-large white black-text" style="display:block;margin-top:2px;" href="https://github.com/andrecowie">GITHUB</a>
+				<a class="waves-effect waves-light btn-large white black-text" style="display:block;margin-top:2px;" href="https://twitter.com/barneycowie">TWITTER</a>
+				<a class="waves-effect waves-light btn-large white black-text" style="display:block;margin-top:2px;" href="https://keybase.io/abcow">KEYBASE</a>
+
+			</div>
 
 		</div>
-		<div class="row vcentered nomargin">
+	</div>
+	<hr style="margin:0; border-bottom:0;" />
+	<div id="particles" style="height: 10vh"></div>
+	<hr style="margin:0; border-bottom:0;" />
+
+
+	<div class="container" style="margin-top:1vh;">
+
+		<div class="row">
+			<div class="col s12 center-align">
+				<span class="flow-text grey darken-4 white-text ">CONTACT!</span>
+			</div>
+		</div>
+		<div class="row">
+			<form class="col s12 center-align">
+				<div class="input-field col s12 m6 l4 center-align">
+					<input placeholder="" id="name" type="text" class="validate">
+					<label for="name">Name</label>
+				</div>
+				<div class="input-field col s12 m6 offset-l4 l4 center-align">
+					<input placeholder="" id="email" type="email" class="validate">
+					<label for="email">Email</label>
+				</div>
+				<div class="input-field col s12 center-align">
+					<textarea id="textarea1" class="materialize-textarea"></textarea>
+					<label for="textarea1">Message</label>
+				</div>
+				<div class="input-field col s12 center-align">
+					<button class="btn waves-effect waves-light grey darken-4">SEND</button>
+				</div>
+			</form>
 		</div>
 
 	</div>
-	<div id="particles"></div>
+	<hr style="margin:0; border-bottom:0;"/>
+	<div class="row">
+		<div class="col l6 center-align" style="border-right:1px solid;">
+			<span class="flow-text grey darken-4 white-text ">BLOG!</span>
+			{% for x in blog %}
+			<div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{x['img']}}">
+          <span class="card-title">{{x['title']}}</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">read</i></a>
+        </div>
+        <div class="card-content">
+          <p>{{x['subtitle']}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+			{% endfor %}
+		</div>
+		<div class="col l6 center-align">
+			<span class="flow-text grey darken-4 white-text ">GALLERY!</span>
+		</div>
+	</div>
+
 	<script type="text/javascript" src="{{url_for('static', filename='js/particles.min.js')}}"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='js/anime.min.js')}}"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -47,8 +126,6 @@
 	<script type="text/javascript" src="{{url_for('static', filename='js/materialize.min.js')}}"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='js/app.js')}}"></script>
 	<script>
-
-
 	</script>
 </body>
 
