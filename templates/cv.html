@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}<h1 class="mt-5">Hello</h1>{% endblock %}
+{% block links %}{% endblock %}
+{% block body %} <p class="font-weight-normal"><br />I am a 21 year old that lives in Auckland. I enjoy surfing, swimming and socialising.  </p>
+<div class="row">
+  <div class="col-4">
+    <div class="list-group" id="list-tab" role="tablist">
+      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Current Work</a>
+      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Work History</a>
+      <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">University</a>
+      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">School</a>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">I am currently working as a data engineer in the data science team at Air New Zealand. I started this role in Feburary. Day to day I work with python, sql, R, AWS and plenty of data. I enjoy being active in my team, trying to improve our process and the use of tools like git.</div>
+      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">I got an internship as a software engineer at Air New Zealand in February of 2016. I worked in Enterprise Products until i changed into my role in Data and Analytics. I worked part-time during my final year at AUT. In this role i stood up a few internal websites, and started building internal native mobile applications. Prior to that I worked at Photo Remuera for 3 years as a store manager and had many responsibilities. I begin automating small parts of my work towards the end of my three years. I also developed many creative digital skills, in particular my photography. </div>
+      <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">I started at AUT in 2014 doing a Bachelors of Computer and Information Sciences. This was my first exposure to programming. I got hooked to the element of problem solving, and I also dedicated a lot of time to learning tools that weren't being taught in my classes that  I would find through my own research. I powered through the degree quickly and was exposed to many great ideas, tools, teachers and peers.</div>
+      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block footer %}{% endblock %}

@@ -14,9 +14,9 @@ def home():
 	return render_template("index.html", datetime=datetime, blog = blogposts)
 
 
-@app.route('/visualisations')
+@app.route('/cv')
 def visualisations():
-	return render_template("visualisations.html")
+	return render_template("cv.html")
 
 @app.route('/gallery')
 def gallery():
