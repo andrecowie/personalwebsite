@@ -4,10 +4,13 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "@material-ui/styles": "^3.0.0-alpha.10",
+    "@material-ui/system": "^3.0.0-alpha.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-d3-components": "^0.9.1",
     "react-dom": "^16.8.3",
+    "styled-components": "^4.2.0",
     "typeface-roboto": "0.0.54"
   },
   "devDependencies": {
