@@ -2,21 +2,24 @@ import { unstable_useMediaQuery as useMediaQuery } from "@material-ui/core/useMe
 import React, { Component } from "react";
 import "./App.css";
 import Grid from "@material-ui/core/Grid";
-import {typography, palette, spacing} from "@material-ui/system";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import { typography, palette, spacing } from "@material-ui/system";
 import styled from "styled-components";
 import purple from "@material-ui/core/colors/purple";
 import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
 import "typeface-roboto";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { shadows } from "@material-ui/system";
+import meandeiffel from "./73560013.png";
+
 
 const palettePrimaryLight = "#9cff57";
 const palettePrimary = "#1faa00";
 const backgroundWhite = "#EAEAEA";
 const Box = styled.h1`${palette}${spacing}${typography}`;
-
 
 const theme = createMuiTheme({
   palette: {
@@ -59,141 +62,153 @@ function AutoGrid(props) {
   const sixpx = useMediaQuery("(min-width: 600px)");
   const ninepx = useMediaQuery("(min-width: 900px)");
   const twelvepx = useMediaQuery("(min-width: 1200px)");
-  const eightteenpx = useMediaQuery("(min-width: 1800px)");
+  const nineteentwenty = useMediaQuery("(min-width: 1920px)");
 
   // Return Mobile Display Below
-  // if (sixpx === false) {
-    // return <div>></div>;
+  if (sixpx === false) {
+  return <div>></div>;
 
-    //   return (
-    //     <div className={classes.root}>
-    //       <MuiThemeProvider theme={theme}>
-    //         <Grid container spacing={8}>
-    //           <AppBar position="static">
-    //             <Toolbar>
-    //               <Typography variant="h1" gutterBottom >
-    //                 small
-    //               </Typography>
-    //             </Toolbar>
-    //           </AppBar>
-    //         </Grid>
-    //         </MuiThemeProvider>
-    //     </div>
-    //   );
-
-    // // Return Small Display Below
-    // } else if (ninepx === false) {
-    //   return (
-    //     <div className={theme.root}>
-    //         <Grid container spacing={8}>
-    //           <AppBar position="static">
-    //             <Toolbar>
-    //               <Typography variant="h1" gutterBottom >
-    //                 medium
-    //               </Typography>
-    //             </Toolbar>
-    //           </AppBar>
-    //         </Grid>
-    //     </div>
-    //   );
-    // // Return Medium Display Below
-    // } else if (twelvepx === false) {
-    //   return(
-    //     <div className={theme.root}>
-    //         <Grid container spacing={8}>
-    //           <AppBar position="static">
-    //             <Toolbar>
-    //               <Typography variant="h1" gutterBottom >
-    //                 larges
-    //               </Typography>
-    //             </Toolbar>
-    //           </AppBar>
-    //         </Grid>
-
-    //     </div>
-    //   );
-
-    //  // Return Large Display Below
-  // } else if (eightteenpx === false) {
-  //   return (
-  //     <div className={theme.root}>
-  //       <Grid container spacing={8}>
-  //         <AppBar position="static">
-  //           <Toolbar>
-  //             <Typography variant="h1" gutterBottom>
-  //               large
-  //             </Typography>
-  //           </Toolbar>
-  //         </AppBar>
-  //       </Grid>
-  //     </div>
-  //   );
-
-  //   // Return Desktop Display Below
-  // } else {
     return (
-      <MuiThemeProvider theme={theme}>
-        <div className={classes.root} style={{ maxWidth: "100vw" }}>
-          <Grid
-            container
-            spacing={0}
-            justify="center"
-            direction="row"
-            alignItems="center"
-            style={{ maxWidth: "100vw"}}
-          >
-            <Grid item xs={1} xl={3} textAlign="center" ></Grid>
-            <Grid item xs={10} xl={5}>
-            <div style={{ marginTop: "1em"}} >
-              <Typography component="h2" variant="h3" >
-                André Cowie
-              </Typography>
-              <div style={{marginLeft: "3em"}}>
-              <Typography component="h5" variant="h6" fontSize={12} gutterBottom>
-              Data Engineer
-              </Typography>
-              <Box
-              color="primary.main"
-              bgcolor="background.paper"
-              fontFamily="h6.fontFamily"
-              fontWeight={{ xl: 300, md: 200, sm: 100, xs: 50}}
-              fontSize="h6.fontSize"
-            >Hello</Box>
-              </div>
-              <Typography component="h5" variant="body2" gutterBottom>
-                Auckland City<br/>
-                Air New Zealand<br/>
-
-              </Typography>
-              </div>
-            </Grid>
-            <Grid item xs={1} xl={4} textAlign="center" ></Grid>
+      <div className={classes.root}>
+        <MuiThemeProvider theme={theme}>
+          <Grid container spacing={8}>
+            <AppBar position="static">
+              <Toolbar>
+                <Typography variant="h1" gutterBottom >
+                  small
+                </Typography>
+              </Toolbar>
+            </AppBar>
           </Grid>
-          <Grid
-            container
-            spacing={0}
-            justify="center"
-            direction="row"
-            alignItems="center"
-            style={{ maxWidth: "100vw" }}
-          >
-            <Grid item xs={3}>
-            </Grid>
-            <Grid item xs={3}>
-              <div className={classes.imageBorder} />
-            </Grid>
-
-            <Grid item xs={3}>
-              <div className={classes.imageBorder} />
-            </Grid>
-            <Grid item xs={3}>
-              <div className={classes.imageBorder} />
-            </Grid>
-          </Grid>
-        </div>
-      </MuiThemeProvider>
+          </MuiThemeProvider>
+      </div>
     );
-  // }
+
+  // Return Small Display Below
+  } else if (ninepx === false) {
+    return (
+      <div className={theme.root}>
+          <Grid container spacing={8}>
+            <AppBar position="static">
+              <Toolbar>
+                <Typography variant="h1" gutterBottom >
+                  medium
+                </Typography>
+              </Toolbar>
+            </AppBar>
+          </Grid>
+      </div>
+    );
+  // Return Medium Display Below
+  } else if (twelvepx === false) {
+    return(
+      <div className={theme.root}>
+          <Grid container spacing={8}>
+            <AppBar position="static">
+              <Toolbar>
+                <Typography variant="h1" gutterBottom >
+                  larges
+                </Typography>
+              </Toolbar>
+            </AppBar>
+          </Grid>
+
+      </div>
+    );
+
+   // Return Large Display Below
+  } else if ( nineteentwenty === false) {
+    return (
+      <div className={theme.root}>
+        <Grid container spacing={8}>
+          <AppBar position="static">
+            <Toolbar>
+              <Typography variant="h1" gutterBottom>
+                large
+              </Typography>
+            </Toolbar>
+          </AppBar>
+        </Grid>
+      </div>
+    );
+
+    // Return Desktop Display Below
+  } else {
+  return (
+
+    <MuiThemeProvider theme={theme}>
+      <div className={classes.root} style={{ maxWidth: "100vw" }}>
+        <Grid
+          container
+          spacing={0}
+          justify="center"
+          direction="row"
+          alignItems="center"
+          style={{ maxWidth: "100vw" }}
+        >
+          <Grid item xl={3} textAlign="center" ></Grid>
+          <Grid item xl={5}>
+            <div style={{ marginTop: "1em" }}>
+              <Typography
+                component="h2"
+                className={classes.header}
+                variant="h4"
+              >
+                André
+              </Typography>
+              <div style={{ marginLeft: "3em" }} />
+            </div>
+          </Grid> 
+          <Grid item xs={0} sm={3} xl={4} textAlign="center" />
+        </Grid>
+        <br />
+        <Grid
+          container
+          spacing={0}
+          justify="center"
+          direction="row"
+          alignItems="center"
+          style={{ maxWidth: "100vw" }}
+        >
+          <Grid item xl={4} textAlign="center">
+            <Card className={classes.card} raised={true}>
+              <CardMedia
+                component="img"
+                alt="Alts for awesome images"
+                className={classes.media}
+                height="auto"
+                image={meandeiffel}
+                title="Hey"
+              />
+            </Card>
+          </Grid>
+          <Grid item xs={4} sm={3} md={2} lg={2} xl={5} />
+        </Grid>
+
+        <Grid
+          container
+          spacing={0}
+          justify="center"
+          direction="row"
+          alignItems="center"
+          style={{ maxWidth: "100vw" }}
+        >
+          <Grid item xs={3} />
+          <Grid item xs={3}>
+            <div className={classes.imageBorder} />
+          </Grid>
+
+          <Grid item xs={3}>
+            <div className={classes.imageBorder} />
+          </Grid>
+          <Grid item xs={3}>
+            <div className={classes.imageBorder} />
+          </Grid>
+        </Grid>
+      </div>
+    </MuiThemeProvider>
+  );
+  }
 }
 
 AutoGrid.propTypes = {
