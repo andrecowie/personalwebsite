@@ -14,7 +14,9 @@ import "typeface-roboto";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { shadows } from "@material-ui/system";
 import meandeiffel from "./73560013.png";
-
+import purp from "./F1030003.png";
+import melb from "./62060014.png";
+import ImageScroller from "./ImageScroller.js";
 
 const palettePrimaryLight = "#9cff57";
 const palettePrimary = "#1faa00";
@@ -171,16 +173,11 @@ function AutoGrid(props) {
           style={{ maxWidth: "100vw" }}
         >
           <Grid item xl={4} textAlign="center">
-            <Card className={classes.card} raised={true}>
-              <CardMedia
-                component="img"
-                alt="Alts for awesome images"
-                className={classes.media}
-                height="auto"
-                image={meandeiffel}
-                title="Hey"
-              />
-            </Card>
+
+
+              <ImageScroller className={classes.media} src={[meandeiffel, purp, melb ]}/>
+
+            
           </Grid>
           <Grid item xs={4} sm={3} md={2} lg={2} xl={5} />
         </Grid>
