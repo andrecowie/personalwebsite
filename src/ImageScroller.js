@@ -9,69 +9,88 @@ class ImageScroller extends React.Component {
     this.state = {
       opacity: 1,
       img: 0,
-      hovering: false
+      hovering: false,
+      always: props.always
     };
     this.mouseEnter = this.mouseEnter.bind(this);
-    this.randomSrc = this.randomSrc.bind(this);
     this.mouseLeave = this.mouseLeave.bind(this);
+    this.hoverImageRotate = this.hoverImageRotate.bind(this);
   }
 
-  randomSrc() {
-    this.setState({ });
+  hoverImageRotate(){
+    clearInterval(this.interval);
+    if (this.state.img == this.props.src.length-1) {
+      this.nextimg = 0;
+    } else {
+      this.nextimg = this.state.img + 1;
+    }
+    if (this.props.always){
+      if(this.props.reverseHover && this.hovering){
+      }else{
+      this.setState(
+        {
+          img: this.nextimg
+        },
+        function() {
+          this.interval = setInterval(() => this.hoverImageRotate(), this.props.imageRotationSpeed);
+        })
+      }
+    } else if (this.hovering){
+      this.setState(
+        {
+          img: this.nextimg
+        },
+        function() {
+          this.interval = setInterval(() => this.hoverImageRotate(), this.props.imageRotationSpeed);
+        })
+    }else{
+      
+    }
   }
 
   mouseEnter() {
-    console.log(this.state.hovering);
     this.hovering = true;
     this.setState(
       {
-        hovering: true,
-        img: Math.floor(Math.random() * this.props.src.length)
+        hovering: true
       },
       function() {
-        console.log("this state hovering equals true");
+        if (this.props.reverseHover){
+          this.hoverImageRotate();
+        }
       }
     );
   }
   
-
   mouseLeave() {
     this.hovering = false;
     this.setState(
       {
+        img: 0,
         hovering: false
-      },
-      function() {
-        console.log("this state hovering equals false");
       }
     );
-  }
-  componentDidMount() {
-    console.log("didmount");
-    if (this.hovering){
-      this.interval = setInterval(() => this.setState({ img: Math.floor(Math.random() * this.props.src.length) }), 1000);
+    if (this.props.reverseHover){
+      this.hoverImageRotate()
     }
   }
-  componentWillUnmount() {
-    console.log("willumount")
-    clearInterval(this.interval)
+
+  componentDidMount() {
+    if (this.state.always){
+      this.hoverImageRotate();
+    }
   }
 
-  // componentDidUpdate() {
-  //   if (this.state.hovering){
-  //       this.randomSrc();
-      
-      
-  //   }
-  // }
-  
+  componentWillUnmount() {
+  }
+
   render() {
     return (
       <div style={{ opacity: this.state.opacity }}>
         <img
           src={this.props.src[this.state.img]}
           alt="lel"
-          style={{ height: "auto", "max-width": "100%", "max-height": "100%" }}
+          style={{ height: "auto", "width": "100%", "max-height": "100%" }}
           className={this.props.className}
           onMouseEnter={this.mouseEnter}
           onMouseLeave={this.mouseLeave}

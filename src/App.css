@@ -3,6 +3,7 @@
 }
 html { height:100%; }
 body { position:absolute; top:0; bottom:0; right:0; left:0; }
+
 .App-logo {
   animation: App-logo-spin infinite 1s linear;
   height: 3vmin;
