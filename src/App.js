@@ -8,14 +8,12 @@ import { Typography, Button } from "@material-ui/core";
 import "typeface-roboto";
 import { createMuiTheme } from "@material-ui/core/styles";
 import Markdown from './Markdown';
-
-
-
+// import note from './note.md';
 const palettePrimaryLight = "#9cff57";
 const palettePrimary = "#1faa00";
 const blackBackground = "#000000";
-
-
+var openBlog = false;
+console.log(openBlog);
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -43,7 +41,6 @@ const theme = createMuiTheme({
   root: {
     flexGrow: 1,
     backgroundColor: blackBackground,
-
     height: "100%",
     minHeight: "100vh",
     width: ""
@@ -68,24 +65,31 @@ const theme = createMuiTheme({
   },
   header: {
     textAlign: "center"
-  }
+  },
+  blog: { 
+    isOpen: false
+  },
 });
-
+function hiddenButtonBlog(){
+  this.setState({'isOpen': !this.state.isOpen});
+}
 class MyMarkdown extends React.Component{
   constructor(props){
     super(props);
-    this.state = {
-      markdown: "# Loading"
-    }
+    this.state = { markdown: "---", isOpen: false }
+    hiddenButtonBlog = hiddenButtonBlog.bind(this)
   }
 
   componentDidMount(){
-
-    fetch("/markdown/note.md", {mode: 'no-cors'})
+    // fetch(note)
+    fetch("/markdown/note.md")
     .then(response => {
-      return response.text();
-    })
-    .then(text => {
+      const tex = response.text();
+      console.log(tex);
+      
+      return tex
+    }).then(text => { 
+      console.log(text)
       this.setState({
         markdown: text
       })
@@ -94,11 +98,53 @@ class MyMarkdown extends React.Component{
   }
 
   render(){
+    console.log(this.state.markdown);
     return(
-      <Markdown children={this.state.markdown}></Markdown>
+      theme.blog.isOpen && <Markdown children={this.state.markdown}></Markdown>
     )
   }
 }
+
+class HiddenButton extends React.Component{
+  constructor(props){
+    super(props);
+    this.handleMouseClick = this.handleMouseClick.bind(this);
+    this.handleMouseHoverEvent = this.handleMouseHoverEvent.bind(this);
+    this.handleMouseLeaveEvent = this.handleMouseLeaveEvent.bind(this);
+    this.state = {
+      isHovering: false,
+      isClicked: false,
+    };
+  }
+  handleMouseClick(){
+    
+    theme.blog.isOpen = !this.state.isClicked;
+    hiddenButtonBlog();
+    this.setState({ 
+      isClicked: !this.state.isClicked,
+    })
+  }
+  handleMouseHoverEvent(){
+    this.setState({
+      isHovering: true
+    })
+  }
+  handleMouseLeaveEvent(){
+    this.setState({
+      isHovering: false
+    })
+  }
+  render(){
+    return (
+          <Button align="center" onClick={this.handleMouseClick}>    
+              <Typography 
+            component="h1"
+            variant="overline"
+            style={{ color: theme.palette.primary.background.paper}}
+            align="center">{this.props.text}</Typography></Button>)
+          }
+}
+
 
 class FirstPost extends React.Component{
   constructor(props){
@@ -204,7 +250,7 @@ function AutoGrid(props) {
         <Grid item xl={6} lg={6} md={6} sm={6} xs={5}>
           <div style={{ marginTop: "30vh" }}>
             <Typography 
-            component="h1"
+            component="h2"
             variant="overline"
             style={{ color: theme.palette.text.secondary}}
             align="center">
@@ -219,17 +265,30 @@ function AutoGrid(props) {
              body="drecowie@gmail.com"></LiveHowYouWant>
              
           </div>
-          <MyMarkdown></MyMarkdown>
+          
         </Grid>
         <Grid 
         item xl={1}  lg={1} md={1} sm={1} xs={1}></Grid>
         <Grid 
         item xl={2}  lg={2} md={2} sm={2} xs={2}>
-        <FirstPost></FirstPost>
+        <HiddenButton text="/" ></HiddenButton>
        
         <FirstPost></FirstPost>
         <FirstPost></FirstPost>
         <FirstPost></FirstPost>
+      </Grid>
+      </Grid>
+      <Grid
+        container
+        spacing={0}
+        justify="center"
+        direction="row"
+        alignItems="flex-start"
+        style={{ maxWidth: "100vw" }}
+      >
+      <Grid 
+        item xl={10}  lg={10} md={10} sm={10} xs={10}>
+      <MyMarkdown></MyMarkdown>
       </Grid>
       </Grid>
     </div>
